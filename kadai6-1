@@ -1,13 +1,15 @@
 import requests
 
+# e-Stat APIのアプリケーションID
 APP_ID = "8b26bb3e74eeef375c87e3ce4b978ea1fe5060ca"
 API_URL  = "https://api.e-stat.go.jp/rest/3.0/app/getStatsData?cdArea=12000&cdCat01=E1101%2CE2101%2CE3101%2CE4101%2CE6101%2CE6102&appId=&lang=J&statsDataId=0000010105&metaGetFlg=Y&cntGetFlg=N&explanationGetFlg=Y&annotationGetFlg=Y&sectionHeaderFlg=1&replaceSpChars=0"
+# 取得したデータ、幼稚園、小学校、中学校、高校、短期大学、大学の数
 
 params = {
-    "appId": APP_ID,
-    "statsDataId":"0000010105",
-    "cdArea":"1200",
-    "cdCat01": "E1101,E2101,E3101,E4101,E6101,E6102",
+    "appId": APP_ID,　# アプリケーションID
+    "statsDataId":"0000010105",　#　統計表ID
+    "cdArea":"1200",　# 地域コード
+    "cdCat01": "E1101,E2101,E3101,E4101,E6101,E6102",　# 分類項目
     "metaGetFlg":"Y",
     "cntGetFlg":"N",
     "explanationGetFlg":"Y",
@@ -24,3 +26,5 @@ response = requests.get(API_URL, params=params)
 # Process the response
 data = response.json()
 print(data)
+
+
