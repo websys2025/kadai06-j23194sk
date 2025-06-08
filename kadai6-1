@@ -1,13 +1,13 @@
 import requests
 
 APP_ID = "8b26bb3e74eeef375c87e3ce4b978ea1fe5060ca"
-API_URL  = "https://api.e-stat.go.jp/rest/3.0/app/json/getStatsData?cdArea=12000&cdCat01=F6204%2CF6205%2CF6206%2CF6207&appId=&lang=J&statsDataId=0000010106&metaGetFlg=Y&cntGetFlg=N&explanationGetFlg=Y&annotationGetFlg=Y&sectionHeaderFlg=1&replaceSpChars=0"
+API_URL  = "https://api.e-stat.go.jp/rest/3.0/app/getStatsData?cdArea=12000&cdCat01=E1101%2CE2101%2CE3101%2CE4101%2CE6101%2CE6102&appId=&lang=J&statsDataId=0000010105&metaGetFlg=Y&cntGetFlg=N&explanationGetFlg=Y&annotationGetFlg=Y&sectionHeaderFlg=1&replaceSpChars=0"
 
 params = {
     "appId": APP_ID,
-    "statsDataId":"0000010107",
-    "cdArea":"12101,12102,12103,12104,12105,12106",
-    "cdCat01": "F6204,F6205,F6206,F6207",
+    "statsDataId":"0000010105",
+    "cdArea":"1200",
+    "cdCat01": "E1101,E2101,E3101,E4101,E6101,E6102",
     "metaGetFlg":"Y",
     "cntGetFlg":"N",
     "explanationGetFlg":"Y",
