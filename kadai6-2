@@ -1,1 +1,44 @@
+import requests
+import json
+
+# ================================================
+# kadai6-2.py
+# 「労働力調査（基本集計）完全失業率（都道府県別）」のオープンデータを取得するプログラム
+# ================================================
+
+# e-Statで取得したアプリケーションID
+APP_ID = "8b26bb3e74eeef375c87e3ce4b978ea1fe5060ca"
+
+# APIの基本エンドポイント（統計データ取得）
+API_URL = "https://api.e-stat.go.jp/rest/3.0/app/getStatsData"
+
+# パラメータ設定
+params = {
+    "appId": "8b26bb3e74eeef375c87e3ce4b978ea1fe5060ca",                    # アプリケーションID
+    "statsDataId": "0003109247",       # 労働力調査
+    "cdArea": "13000,27000,14000",     # 地域コード（東京都、大阪府、神奈川県）
+    "metaGetFlg": "Y",                
+    "explanationGetFlg": "Y",         
+    "annotationGetFlg": "Y",          
+    "lang": "J"                      
+}
+
+response = requests.get(API_URL, params=params)
+
+if response.status_code == 200:
+    data = response.json()
+
+    try:
+        values = data['GET_STATS_DATA']['STATISTICAL_DATA']['DATA_INF']['VALUE']
+
+        for item in values:
+            time = item.get('@time')
+            area = item.get('@area')
+            value = item.get('$')
+            print(f"{time} - {area}: {value}%")
+    except KeyError:
+        print("データの形式が不正です。")
+else:
+    print("APIリクエストに失敗しました。ステータスコード：", response.status_code)
+
 
