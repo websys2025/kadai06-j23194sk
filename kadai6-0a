@@ -1,0 +1,26 @@
+import requests
+
+APP_ID = "8b26bb3e74eeef375c87e3ce4b978ea1fe5060ca"
+API_URL  = "https://api.e-stat.go.jp/rest/3.0/app/json/getStatsData?cdArea=12000&cdCat01=F6204%2CF6205%2CF6206%2CF6207&appId=&lang=J&statsDataId=0000010106&metaGetFlg=Y&cntGetFlg=N&explanationGetFlg=Y&annotationGetFlg=Y&sectionHeaderFlg=1&replaceSpChars=0"
+
+params = {
+    "appId": APP_ID,
+    "statsDataId":"0000010107",
+    "cdArea":"12101,12102,12103,12104,12105,12106",
+    "cdCat01": "F6204,F6205,F6206,F6207",
+    "metaGetFlg":"Y",
+    "cntGetFlg":"N",
+    "explanationGetFlg":"Y",
+    "annotationGetFlg":"Y",
+    "sectionHeaderFlg":"1",
+    "replaceSpChars":"0",
+    "lang": "J"  # 日本語を指定
+}
+
+
+
+#response = requests.get(API_URL, params=params)
+response = requests.get(API_URL, params=params)
+# Process the response
+data = response.json()
+print(data)
